@@ -12,9 +12,9 @@ function App() {
             name="firstName"
             required
           />
-          <input
+          <textarea
             type="text"
-            placeholder="First Name"
+            placeholder="Address"
             name="firstName"
             required
           />
