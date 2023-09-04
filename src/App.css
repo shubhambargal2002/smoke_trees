@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 1300px;
 }
 
 .formContainer {
@@ -54,4 +55,12 @@ textarea {
   background-color: #3bb19b;
   color: white;
   margin: 10px;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 600px) {
+  input,
+  textarea {
+    width: 300px;
+  }
 }
