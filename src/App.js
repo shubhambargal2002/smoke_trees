@@ -2,10 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [user, setUser] = useState({ userName: "", address: "" });
+  const initialUser = { userName: "", address: "" };
+  const [user, setUser] = useState(initialUser);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,8 +15,8 @@ function App() {
       const res = await axios.post("http://localhost:5000/user", user);
       if (res.status === 200) {
         toast.success("User data added Successfully...!");
+        setUser(initialUser);
       }
-      setUser({ userName: "", address: "" });
     } catch (error) {
       console.log(error);
       if (error.response.status === 422) {
@@ -35,13 +36,17 @@ function App() {
           <input
             type="text"
             placeholder="User Name"
+            id="userName"
             name="userName"
+            value={user.userName}
             onChange={onChange}
             required
           />
           <textarea
             placeholder="Address"
+            id="address"
             name="address"
+            value={user.address}
             onChange={onChange}
             required
           />
